@@ -1,0 +1,27 @@
+{
+  "name": "brokerhub",
+  "version": "1.0.0",
+  "description": "A commercial real estate web app that displays relevant information from a MySQL database. Data is uploaded on the user end, parsed, and then analyzed to display correctly. Additionally allows Commercial Real Estate reports to be downloaded.",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kpdebree/BrokerHub.git"
+  },
+  "keywords": [
+    "mysql",
+    "express",
+    "excel",
+    "real",
+    "estate",
+    "exceljs"
+  ],
+  "author": "kpdebree",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kpdebree/BrokerHub/issues"
+  },
+  "homepage": "https://github.com/kpdebree/BrokerHub#readme"
+}
