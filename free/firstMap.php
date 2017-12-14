@@ -14,7 +14,7 @@
 <div class="container"> 
     <?php require('marker-data.php'); ?>
 
-    <h3>Austrailian bars Google Map
+    <h3>Broker Hub
 
     </h3>
     <div id="map"></div>
