@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
 
 	user: 'root',
 
-	password: password,
+	password: password || 'root',
 	database: 'brokerhub'
 });
 
@@ -58,17 +58,6 @@ function readAnalytics() {
 	var inboundWorkbook = new Excel.Workbook();
 	inboundWorkbook.xlsx.readFile('3Q17_market_analytics.xlsx').then(function() {
 		var inboundWorksheet = inboundWorkbook.getWorksheet(1);
-		// console.log(inboundWorksheet)
-		// console.log("Worksheet Length: " + inboundWorksheet._rows.length)
-		// // console.log("Test: " + JSON.stringify(inboundWorksheet._rows[1]))
-		// inboundWorksheet.eachRow({ includeEmpty: true}, function(row, rowNumber) {
-		// 	row.eachCell({ includeEmpty: true }, function(cell, colNumber) {
-		// 		// console.log("Cell " + rowNumber + ", " + colNumber + ": " + typeof cell.value)
-		// });
-		// // var column2 = inboundWorksheet.getColumn(2);
-		// // console.log("Column 2: " + column2);
-		
-		// });
 		var headers = [];
 		var headerRow = inboundWorksheet.getRow(1);
 		headerRow.eachCell({ includeEmpty: true}, function(cell, colNumber) {
