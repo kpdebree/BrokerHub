@@ -4,23 +4,20 @@
 
 // Dependencies
 // =============================================================
-var Comps = require("../models/comps.js");
+var db = require("../models");
 
 // Routes
 // =============================================================
  module.exports = function(app) {
 
 	  app.get("/api/comps", function(req, res) {
-	    Comps.findAll({}).then(function(results) {
+	    db.sales_comps.findAll({}).then(function(results) {
 	      res.json(results);
 	    });
 	  });
-}
-
- module.exports = function(app) {
 
 	  app.get("/api/analytics", function(req, res) {
-	    Comps.findAll({}).then(function(results) {
+	    db.market_analytics.findAll({}).then(function(results) {
 	      res.json(results);
 	    });
 	  });

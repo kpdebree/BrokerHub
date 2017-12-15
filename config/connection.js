@@ -1,5 +1,5 @@
 var mysql = require("mysql");
-var password = require("password")
+var password = require("../password")
 
 var connection = mysql.createConnection({
 	port: 3306,
