@@ -31,7 +31,11 @@ function initMap(locations) {
 
       google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-          infowindow.setContent(locations[i].building_name);
+            var infoName = "<h3>" + locations[i].building_name + "</h3>";
+            var infoAddress = locations[i].address + " " + locations[i].city + ", CA " + locations[i].zip_code;
+            var infoSize = locations[i].square_feet + " square feet " + locations[i].building_type;
+            var infoPrice = "$" + locations[i].price_psf + " per square foot";
+          infowindow.setContent(infoName + "<br>" + infoAddress + "<br>" + infoSize + "<br>" + infoPrice);
           infowindow.open(map, marker);
         }
       })(marker, i));
