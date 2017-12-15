@@ -142,7 +142,7 @@ function uploadAnalytics() {
 		}
 		for (var i = 0; i < outboundJSON.length; i++) {
 			connection.query(
-				"INSERT INTO `3Q17_market_analytics` SET ?",
+				"INSERT INTO `market_analytics` SET ?",
 				[
 				{
 					quarter: outboundJSON[i].quarter,
@@ -216,7 +216,7 @@ function uploadComps() {
 		}
 		for (var i = 0; i < outboundJSON.length; i++) {
 			connection.query(
-				"INSERT INTO `3Q17_sales_comps` SET ?",
+				"INSERT INTO `sales_comps` SET ?",
 				[
 				{
 					address: outboundJSON[i].address,

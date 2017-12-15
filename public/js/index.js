@@ -1,3 +1,45 @@
+var comps;
+
+function getData() {
+    $.get("/api/comps", function(data) {
+        console.log(data)
+        comps = data;
+        
+    })
+    placeMarkers();
+};
+
+
+function placeMarkers() {
+    // Place each marker on the map  
+    for( i = 0; i < comps.length; i++ ) {
+        console.log(comps[i])
+        var position = new google.maps.LatLng(comps[i].latitude, comps[i].longitude);
+        bounds.extend(position);
+        var marker = new google.maps.Marker({
+            position: position,
+            map: map,
+            title: comps[i].building_name
+        });
+
+         google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+
+                
+
+                infoWindow.setContent('<div class="info_content"><h3>' + comps[i].building_name + '</h3></div>');
+
+
+                infoWindow.open(map, marker);
+            }
+        })(marker, i));
+
+        // Center the map to fit all markers on the screen
+        map.fitBounds(bounds);
+    }
+}
+
+
 
 function initMap(){
 
@@ -13,35 +55,8 @@ function initMap(){
         
     var infoWindow = new google.maps.InfoWindow(), marker, i;
 
+    getData();
 
-    
-    // Place each marker on the map  
-    for( i = 0; i < locations.length; i++ ) {
-        console.log(locations[i])
-        var position = new google.maps.LatLng(locations[i].lat, locations[i].lng);
-        bounds.extend(position);
-        var marker = new google.maps.Marker({
-            position: position,
-            map: map,
-            title: locations[i].name
-        });
-
-         google.maps.event.addListener(marker, 'click', (function(marker, i) {
-            return function() {
-
-                
-
-                infoWindow.setContent('<div class="info_content"><h3>' + locations[i].name + '</h3> <IMG BORDER="0" ALIGN="Left" SRC="' + locations[i].photo + '" height=200px width=200px>'
-                  + '<p>' + locations[i].description + '</p><p>' + locations[i].Link + '</p><p> Temp:' + weather_array[i].temp + '</p><p> Weather: ' + weather_array[i].weather + '</p><p> Conditions: ' + weather_array[i].weatherdescr + '</p></div>');
-
-
-                infoWindow.open(map, marker);
-            }
-        })(marker, i));
-
-        // Center the map to fit all markers on the screen
-        map.fitBounds(bounds);
-    }
 
      var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
         this.setZoom(8);

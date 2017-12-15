@@ -7,50 +7,44 @@ var Sequelize = require("sequelize");
 var sequelize = require("../config/connection.js");
 
 // Creates a "Analytics" model that matches up with DB
-var Analytics = sequelize.define("3q17_market_analytics", {
-  id: {
-    type: Sequelize.INT
-  },
-  quarter: {
-    type: Sequelize.STRING
-  },
-  inventory: {
-    type: Sequelize.INT
-  },
-  vacant_total: {
-    type: Sequelize.INT
-  },
-  available_total: {
-  	type: Sequelize.INT
-  },
-  leasing_total: {
-  	type: Sequelize.INT
-  },
-  leasing_ytd: {
-  	type: Sequelize.INT
-  },
-  sales_total: {
-  	type: Sequelize.INT
-  },
-  sales_ytd: {
-  	type: Sequelize.INT
-  },
-  asking_rent: {
-  	type: Sequelize.FLOAT
-  },
-  sales_price: {
-    type: Sequelize.FLOAT
-  }
-}, {
-  timestamps: false
-});
 
-// Syncs with DB
-Analytics.sync();
+module.exports = function(sequelize, Datatypes) {
+  var Analytics = sequelize.define("market_analytics", {
+    quarter: {
+      type: Datatypes.STRING
+    },
+    inventory: {
+      type: Datatypes.INTEGER
+    },
+    vacant_total: {
+      type: Datatypes.INTEGER
+    },
+    available_total: {
+    	type: Datatypes.INTEGER
+    },
+    leasing_total: {
+    	type: Datatypes.INTEGER
+    },
+    leasing_ytd: {
+    	type: Datatypes.INTEGER
+    },
+    sales_total: {
+    	type: Datatypes.INTEGER
+    },
+    sales_ytd: {
+    	type: Datatypes.INTEGER
+    },
+    asking_rent: {
+    	type: Datatypes.FLOAT
+    },
+    sale_price: {
+      type: Datatypes.FLOAT
+    }
+  }, {
+    timestamps: false
+  });
 
-// Makes the Analytics Model available for other files (will also create a table)
-module.exports = Analytics;
+return Analytics;
 
-
-//Activity 15 - Sequelize - 08 ORM
+};
 
