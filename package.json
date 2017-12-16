@@ -4,7 +4,7 @@
   "description": "A commercial real estate web app that displays relevant information from a MySQL database. Data is uploaded on the user end, parsed, and then analyzed to display correctly. Additionally allows Commercial Real Estate reports to be downloaded.",
   "main": "app.js",
   "scripts": {
-    "test": "test"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
