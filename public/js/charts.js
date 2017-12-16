@@ -34,13 +34,29 @@ function prepData(charts) {
         prices.push(price);
 
     }
-
-    console.log(quarters)
-    console.log(leasing);
-    console.log(sales);
-    console.log(rents);
-    console.log(prices);
 }
+
+
+
+
+    // var chart1Data = {
+    //     labels: quarters,
+    //     datasets: [{
+    //         type: 'line',
+    //         label: 'Asking Rents',
+    //         backgroundColor:
+    //             "rgba(151,187,205,0.2)",
+    //         yAxisID: "y-axis-1",
+    //         data: [rents]
+    //     }, {
+    //         type: 'bar',
+    //         label: 'Vacancy',
+    //         backgroundColor: 
+    //             "rgba(151,187,205,0.2)",
+    //     }]
+    // }
+
+
 
 // function drawLineChart() {
 
