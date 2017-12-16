@@ -2,23 +2,55 @@
 <html>
 <head>
     <title>Charts</title>
-    <link rel="stylesheet" type="text/css" href="./css/reset.css">
+    <!-- <link rel="stylesheet" type="text/css" href="./css/reset.css"> -->
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      <a class="nav-item nav-link active" href="/index.html">Home <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="/charts.html">Charts</a>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">BrokerHub</a>
     </div>
+    <ul class="nav navbar-nav">
+      <li><a href="./index.html">Home</a></li>
+      <li class="active"><a href="./charts.html">Charts</a></li>
+    </ul>
   </div>
 </nav>
 
-<canvas id="myChart" width="400" height="400"></canvas>
+<!-- <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <a class="nav-item nav-link active" href="./index.html">Home <span class="sr-only"></span></a>
+      <a class="nav-item nav-link" href="./charts.html">Charts</a>
+    </div>
+  </div>
+</nav> -->
+
+    <section class="intro">
+        <row>
+            <div class="col-sm-4 left">
+
+            </div>
+
+            <div class="col-sm-4 left"> 
+                <canvas id="myChart" style="width:50%; height:50%"></canvas>
+            </div>
+        
+            <div class="col-sm-4">
+
+            </div>
+
+        </row>
+
+    </section>
+
+
+
 <script>
 var ctx = document.getElementById("myChart");
 var myChart = new Chart(ctx, {
@@ -57,6 +89,74 @@ var myChart = new Chart(ctx, {
         }
     }
 });
+
+function getData() {
+    $.get("/api/analytics", function(data) {
+        console.log(data);
+        // initChart(data);
+        console.log("Length: " + data.length)
+        
+    })
+};
+
+$(document).ready(function() { 
+
+
+    getData();
+  
+});
+
+// function initChart(data) {
+
+// for (var i = 0; )
+
+// }
+
+
+// function drawLineChart() {
+
+//   // Add a helper to format timestamp data
+//   Date.prototype.formatMMDDYYYY = function() {
+//       return (this.getMonth() + 1) +
+//       "/" +  this.getDate() +
+//       "/" +  this.getFullYear();
+//   }
+
+//   var jsonData = $.ajax({
+//     url: 'http://d.microbuilder.io:8080/test/temp',
+//     dataType: 'json',
+//   }).done(function (results) {
+
+//     // Split timestamp and data into separate arrays
+//     var labels = [], data=[];
+//     results["packets"].forEach(function(packet) {
+//       labels.push(new Date(packet.timestamp).formatMMDDYYYY());
+//       data.push(parseFloat(packet.payloadString));
+//     });
+
+//     // Create the chart.js data structure using 'labels' and 'data'
+//     var tempData = {
+//       labels : labels,
+//       datasets : [{
+//           fillColor             : "rgba(151,187,205,0.2)",
+//           strokeColor           : "rgba(151,187,205,1)",
+//           pointColor            : "rgba(151,187,205,1)",
+//           pointStrokeColor      : "#fff",
+//           pointHighlightFill    : "#fff",
+//           pointHighlightStroke  : "rgba(151,187,205,1)",
+//           data                  : data
+//       }]
+//     };
+
+//     // Get the context of the canvas element we want to select
+//     var ctx = document.getElementById("myChart").getContext("2d");
+
+//     // Instantiate a new chart
+//     var myLineChart = new Chart(ctx).Line(tempData);
+//   });
+// }
+
+// drawLineChart();
 </script>
 <script src="./js/charts.js"</script>
 </body>
