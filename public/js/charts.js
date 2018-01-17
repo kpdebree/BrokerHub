@@ -43,6 +43,8 @@ function prepData(charts) {
     console.log(prices);
 
     var data1 = document.getElementById("chart-1").getContext("2d");
+    var data2 = document.getElementById("chart-2").getContext("2d");
+    var data3 = document.getElementById("chart-3").getContext("2d");
 
     var Chart1 = new Chart(data1, {
     type: 'bar',
@@ -66,6 +68,64 @@ function prepData(charts) {
             }
         }
     });
+    var Chart2 = new Chart(data2, {
+    type: 'bar',
+    data: {
+        labels: quarters,
+        datasets: [{
+            label: 'Leasing',
+            data: leasing,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255,99,132,1)',
+            borderWidth: 1
+        }, {
+            label: 'Sales',
+            data: sales,
+            backgroundColor: 'rgba(99,255,132,0.2)',
+            borderColor: 'rgba(99,255,132,1)',
+            borderWidth: 1,
+        }]
+    },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+
+    var Chart3 = new Chart(data3, {
+    type: 'line',
+    data: {
+        labels: quarters,
+        datasets: [{
+            label: 'Asking Rents',
+            data: rents,
+            backgroundColor: 'rgba(255,99,132,0.2)',
+            borderColor: 'rgba(255,99,132,1)',
+            borderWidth: 1
+        }, {
+            label: 'Sale Prices',
+            data: prices,
+            backgroundColor: 'rgba(99,255,132,0.2)',
+            borderColor: 'rgba(99,255,132,1)',
+            borderWidth: 1
+        }]
+    },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true
+                    }
+                }]
+            }
+        }
+    });
+
 
 }
 
