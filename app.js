@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
 
 	user: 'root',
 
-	password: password || 'root',
+	password: 'password',
 	database: 'brokerhub'
 });
 
@@ -156,7 +156,7 @@ function uploadAnalytics() {
 				}
 				],
 				function(error) {
-					console.log("Row " + i + " Added");
+					console.log("Row Added");
 				}
 			)
 
@@ -231,8 +231,8 @@ function uploadComps() {
 				}
 				],
 				function(error) {
-					console.log(error)
-					// console.log("Row " + i + " Added");
+					// console.log(error)
+					console.log("Row Added");
 				}
 			)
 
